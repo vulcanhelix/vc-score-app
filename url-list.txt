@@ -1,0 +1,369 @@
+Portfolio Risk Intelligence Platform - Complete URL List
+================================================================
+
+Base URL: https://statuesque-zuccutto-22e279.netlify.app
+
+Main Pages:
+-----------
+1. https://statuesque-zuccutto-22e279.netlify.app/
+2. https://statuesque-zuccutto-22e279.netlify.app/#risk-score-visualization
+
+Company-Specific URLs (sorted by score - highest to lowest):
+------------------------------------------------------------
+
+1. https://statuesque-zuccutto-22e279.netlify.app/?companyId=openai
+   - Company: OpenAI
+   - Score: 100
+
+2. https://statuesque-zuccutto-22e279.netlify.app/?companyId=lyvc
+   - Company: LYVC
+   - Score: 94
+
+3. https://statuesque-zuccutto-22e279.netlify.app/?companyId=endeavor8
+   - Company: Endeavor8
+   - Score: 93
+
+4. https://statuesque-zuccutto-22e279.netlify.app/?companyId=hightower-advisors
+   - Company: HighTower Advisors
+   - Score: 92
+
+5. https://statuesque-zuccutto-22e279.netlify.app/?companyId=california-healthcare-foundation
+   - Company: California HealthCare Foundation
+   - Score: 91
+
+6. https://statuesque-zuccutto-22e279.netlify.app/?companyId=ritual-capital
+   - Company: Ritual Capital
+   - Score: 88
+
+7. https://statuesque-zuccutto-22e279.netlify.app/?companyId=graham-holdings
+   - Company: Graham Holdings
+   - Score: 87
+
+8. https://statuesque-zuccutto-22e279.netlify.app/?companyId=breed-vc
+   - Company: Breed VC
+   - Score: 86
+
+9. https://statuesque-zuccutto-22e279.netlify.app/?companyId=iotex
+   - Company: IoTeX
+   - Score: 85
+
+10. https://statuesque-zuccutto-22e279.netlify.app/?companyId=banter-capital
+    - Company: Banter Capital
+    - Score: 81
+
+11. https://statuesque-zuccutto-22e279.netlify.app/?companyId=twine-ventures
+    - Company: Twine Ventures
+    - Score: 79
+
+12. https://statuesque-zuccutto-22e279.netlify.app/?companyId=fireroad-ventures
+    - Company: Fireroad Ventures
+    - Score: 77
+
+13. https://statuesque-zuccutto-22e279.netlify.app/?companyId=coalition-operators
+    - Company: Coalition Operators
+    - Score: 75
+
+14. https://statuesque-zuccutto-22e279.netlify.app/?companyId=dream-ventures
+    - Company: Dream Ventures
+    - Score: 74
+
+15. https://statuesque-zuccutto-22e279.netlify.app/?companyId=ingka-investments
+    - Company: Ingka Investments
+    - Score: 74
+
+16. https://statuesque-zuccutto-22e279.netlify.app/?companyId=tacoma-venture-fund
+    - Company: Tacoma Venture Fund
+    - Score: 74
+
+17. https://statuesque-zuccutto-22e279.netlify.app/?companyId=zero-infinity-partners
+    - Company: Zero Infinity Partners
+    - Score: 74
+
+18. https://statuesque-zuccutto-22e279.netlify.app/?companyId=rackhouse-venture-capital
+    - Company: Rackhouse Venture Capital
+    - Score: 73
+
+19. https://statuesque-zuccutto-22e279.netlify.app/?companyId=sv-frontier
+    - Company: SV FRONTIER
+    - Score: 72
+
+20. https://statuesque-zuccutto-22e279.netlify.app/?companyId=dragonfly-capital-management
+    - Company: Dragonfly Capital Management
+    - Score: 71
+
+21. https://statuesque-zuccutto-22e279.netlify.app/?companyId=lbank-labs
+    - Company: LBANK Labs
+    - Score: 67
+
+22. https://statuesque-zuccutto-22e279.netlify.app/?companyId=outlander-vc
+    - Company: Outlander VC
+    - Score: 65
+
+23. https://statuesque-zuccutto-22e279.netlify.app/?companyId=live-oak-bank
+    - Company: Live Oak Bank
+    - Score: 63
+
+24. https://statuesque-zuccutto-22e279.netlify.app/?companyId=startup-haven-ventures
+    - Company: Startup Haven Ventures
+    - Score: 61
+
+25. https://statuesque-zuccutto-22e279.netlify.app/?companyId=sentiero-ventures
+    - Company: Sentiero Ventures
+    - Score: 60
+
+26. https://statuesque-zuccutto-22e279.netlify.app/?companyId=gos-capital
+    - Company: GOS Capital
+    - Score: 55
+
+27. https://statuesque-zuccutto-22e279.netlify.app/?companyId=iu-angel-network
+    - Company: IU Angel Network
+    - Score: 52
+
+28. https://statuesque-zuccutto-22e279.netlify.app/?companyId=mercias-eis-funds
+    - Company: Mercia's EIS funds
+    - Score: 47
+
+29. https://statuesque-zuccutto-22e279.netlify.app/?companyId=emerging-ventures
+    - Company: Emerging Ventures
+    - Score: 45
+
+30. https://statuesque-zuccutto-22e279.netlify.app/?companyId=aimtop-ventures
+    - Company: Aimtop Ventures
+    - Score: 45
+
+31. https://statuesque-zuccutto-22e279.netlify.app/?companyId=one-planet-capital
+    - Company: One Planet Capital
+    - Score: 43
+
+32. https://statuesque-zuccutto-22e279.netlify.app/?companyId=gft-ventures
+    - Company: GFT Ventures
+    - Score: 42
+
+33. https://statuesque-zuccutto-22e279.netlify.app/?companyId=tt-capital-partners
+    - Company: TT Capital Partners
+    - Score: 42
+
+34. https://statuesque-zuccutto-22e279.netlify.app/?companyId=white-oak-global-advisors
+    - Company: White Oak Global Advisors
+    - Score: 42
+
+35. https://statuesque-zuccutto-22e279.netlify.app/?companyId=gener8tor-oklahoma-city-investment-accelerator
+    - Company: gener8tor Oklahoma City Investment Accelerator
+    - Score: 42
+
+36. https://statuesque-zuccutto-22e279.netlify.app/?companyId=decasonic
+    - Company: Decasonic
+    - Score: 41
+
+37. https://statuesque-zuccutto-22e279.netlify.app/?companyId=nkm-capital
+    - Company: NKM Capital
+    - Score: 40
+
+38. https://statuesque-zuccutto-22e279.netlify.app/?companyId=galaxy-venture-capital
+    - Company: Galaxy Venture Capital
+    - Score: 39
+
+39. https://statuesque-zuccutto-22e279.netlify.app/?companyId=tec-ventures
+    - Company: TEC Ventures
+    - Score: 39
+
+40. https://statuesque-zuccutto-22e279.netlify.app/?companyId=earl-grey-capital
+    - Company: Earl Grey Capital
+    - Score: 34
+
+41. https://statuesque-zuccutto-22e279.netlify.app/?companyId=expanding-capital
+    - Company: Expanding Capital
+    - Score: 34
+
+42. https://statuesque-zuccutto-22e279.netlify.app/?companyId=e-squared
+    - Company: e squared
+    - Score: 33
+
+43. https://statuesque-zuccutto-22e279.netlify.app/?companyId=born-capital
+    - Company: Born Capital
+    - Score: 31
+
+44. https://statuesque-zuccutto-22e279.netlify.app/?companyId=sweater
+    - Company: Sweater
+    - Score: 31
+
+45. https://statuesque-zuccutto-22e279.netlify.app/?companyId=verance-capital
+    - Company: Verance Capital
+    - Score: 31
+
+46. https://statuesque-zuccutto-22e279.netlify.app/?companyId=jedar-capital
+    - Company: Jedar Capital
+    - Score: 31
+
+47. https://statuesque-zuccutto-22e279.netlify.app/?companyId=chisos-capital
+    - Company: Chisos Capital
+    - Score: 27
+
+48. https://statuesque-zuccutto-22e279.netlify.app/?companyId=fresh-ventures
+    - Company: Fresh Ventures
+    - Score: 27
+
+49. https://statuesque-zuccutto-22e279.netlify.app/?companyId=startup-phl
+    - Company: StartUp PHL
+    - Score: 23
+
+50. https://statuesque-zuccutto-22e279.netlify.app/?companyId=chloe-capital
+    - Company: Chloe Capital
+    - Score: 22
+
+51. https://statuesque-zuccutto-22e279.netlify.app/?companyId=pacrim-venture-partners
+    - Company: PacRim Venture Partners
+    - Score: 22
+
+52. https://statuesque-zuccutto-22e279.netlify.app/?companyId=jas-ventures
+    - Company: J.A.S Ventures
+    - Score: 20
+
+53. https://statuesque-zuccutto-22e279.netlify.app/?companyId=national-security-innovation-capital
+    - Company: National Security Innovation Capital
+    - Score: 20
+
+54. https://statuesque-zuccutto-22e279.netlify.app/?companyId=meif-maven-debt-finance
+    - Company: MEIF Maven Debt Finance
+    - Score: 19
+
+55. https://statuesque-zuccutto-22e279.netlify.app/?companyId=pente-capital
+    - Company: Pente Capital
+    - Score: 19
+
+56. https://statuesque-zuccutto-22e279.netlify.app/?companyId=acies-investments
+    - Company: Acies Investments
+    - Score: 18
+
+57. https://statuesque-zuccutto-22e279.netlify.app/?companyId=wanxiang-america-healthcare-investments-group
+    - Company: Wanxiang America Healthcare Investments Group
+    - Score: 17
+
+58. https://statuesque-zuccutto-22e279.netlify.app/?companyId=king-hill-capital
+    - Company: King Hill Capital
+    - Score: 17
+
+59. https://statuesque-zuccutto-22e279.netlify.app/?companyId=regah-ventures
+    - Company: Regah Ventures
+    - Score: 14
+
+60. https://statuesque-zuccutto-22e279.netlify.app/?companyId=a-level-capital
+    - Company: A-Level Capital
+    - Score: 14
+
+61. https://statuesque-zuccutto-22e279.netlify.app/?companyId=jds-sports
+    - Company: JDS Sports
+    - Score: 13
+
+62. https://statuesque-zuccutto-22e279.netlify.app/?companyId=shrmlabs
+    - Company: SHRMLabs
+    - Score: 13
+
+63. https://statuesque-zuccutto-22e279.netlify.app/?companyId=ooga-labs
+    - Company: Ooga Labs
+    - Score: 12
+
+64. https://statuesque-zuccutto-22e279.netlify.app/?companyId=hella-ventures
+    - Company: Hella Ventures
+    - Score: 10
+
+65. https://statuesque-zuccutto-22e279.netlify.app/?companyId=electric-ant
+    - Company: Electric Ant
+    - Score: 8
+
+66. https://statuesque-zuccutto-22e279.netlify.app/?companyId=streetedge-capital
+    - Company: StreetEdge Capital
+    - Score: 8
+
+67. https://statuesque-zuccutto-22e279.netlify.app/?companyId=ambition-vc
+    - Company: Ambition VC
+    - Score: 7
+
+68. https://statuesque-zuccutto-22e279.netlify.app/?companyId=seed-san-diego
+    - Company: Seed San Diego
+    - Score: 7
+
+69. https://statuesque-zuccutto-22e279.netlify.app/?companyId=j20-ventures
+    - Company: J20 Ventures
+    - Score: 7
+
+70. https://statuesque-zuccutto-22e279.netlify.app/?companyId=oldslip
+    - Company: Oldslip
+    - Score: 7
+
+71. https://statuesque-zuccutto-22e279.netlify.app/?companyId=san-diego-angel-conference
+    - Company: San Diego Angel Conference
+    - Score: 7
+
+72. https://statuesque-zuccutto-22e279.netlify.app/?companyId=thirdbase-capital
+    - Company: Thirdbase Capital
+    - Score: 6
+
+73. https://statuesque-zuccutto-22e279.netlify.app/?companyId=kiwiventure-partners
+    - Company: KiwiVenture Partners
+    - Score: 6
+
+74. https://statuesque-zuccutto-22e279.netlify.app/?companyId=hanfield-venture-partners
+    - Company: Hanfield Venture Partners
+    - Score: 6
+
+75. https://statuesque-zuccutto-22e279.netlify.app/?companyId=az-angels
+    - Company: A'Z Angels
+    - Score: 6
+
+76. https://statuesque-zuccutto-22e279.netlify.app/?companyId=sunhope-capital
+    - Company: Sunhope Capital
+    - Score: 5
+
+77. https://statuesque-zuccutto-22e279.netlify.app/?companyId=nuecura-partners-llc
+    - Company: NueCura Partners, LLC
+    - Score: 5
+
+78. https://statuesque-zuccutto-22e279.netlify.app/?companyId=rta-capital
+    - Company: RTA Capital
+    - Score: 4
+
+79. https://statuesque-zuccutto-22e279.netlify.app/?companyId=global-sports-venture-studio
+    - Company: Global Sports Venture Studio
+    - Score: 4
+
+80. https://statuesque-zuccutto-22e279.netlify.app/?companyId=incrowd-capital
+    - Company: InCrowd Capital
+    - Score: 3
+
+81. https://statuesque-zuccutto-22e279.netlify.app/?companyId=ranch-ventures
+    - Company: Ranch Ventures
+    - Score: 2
+
+82. https://statuesque-zuccutto-22e279.netlify.app/?companyId=corsa-ventures
+    - Company: Corsa Ventures
+    - Score: 2
+
+83. https://statuesque-zuccutto-22e279.netlify.app/?companyId=bulldog-innovation-group-llc
+    - Company: Bulldog Innovation Group LLC
+    - Score: 1
+
+URLs with Hash Anchors (Direct to Risk Score Section):
+------------------------------------------------------
+
+All of the above URLs can also be accessed with the hash anchor to jump directly to the risk score visualization section by appending "#risk-score-visualization" to any URL.
+
+Examples:
+- https://statuesque-zuccutto-22e279.netlify.app/?companyId=openai#risk-score-visualization
+- https://statuesque-zuccutto-22e279.netlify.app/?companyId=lyvc#risk-score-visualization
+- https://statuesque-zuccutto-22e279.netlify.app/?companyId=endeavor8#risk-score-visualization
+
+Alternative Query Parameter Names:
+----------------------------------
+
+The system also supports these alternative query parameter names for backward compatibility:
+- vcId (instead of companyId)
+- id (instead of companyId)
+
+Examples:
+- https://statuesque-zuccutto-22e279.netlify.app/?vcId=openai
+- https://statuesque-zuccutto-22e279.netlify.app/?id=lyvc
+
+Total URLs: 83 unique company-specific URLs + base URLs = 85+ total accessible URLs
+
+Note: Each URL automatically updates when users select different companies through the interface, maintaining shareability while preserving user interaction capabilities.
