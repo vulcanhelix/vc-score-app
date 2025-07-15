@@ -5,6 +5,7 @@ import { ScoreDisplay } from '../../components/ScoreDisplay';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../components/ui/accordion';
 import { Card, CardContent } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
+import { Calendar, ArrowRight, Bell, Mail } from 'lucide-react';
 
 interface Company {
   id: string;
@@ -19,6 +20,24 @@ export const ElementLight: React.FC = () => {
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [copied, setCopied] = useState(false);
+  
+  // Subscription modal state
+  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    firstName: '',
+    lastName: '',
+    company: ''
+  });
+  const [formErrors, setFormErrors] = useState({
+    email: '',
+    firstName: '',
+    lastName: '',
+    company: ''
+  });
 
   // Check URL parameters for initial company selection
   useEffect(() => {
@@ -83,6 +102,101 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
     }
   };
 
+  // Subscription modal functions
+  const validateForm = () => {
+    const errors = {
+      email: '',
+      firstName: '',
+      lastName: '',
+      company: ''
+    };
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+
+    // First name validation
+    if (!formData.firstName.trim()) {
+      errors.firstName = 'First name is required';
+    }
+
+    // Last name validation
+    if (!formData.lastName.trim()) {
+      errors.lastName = 'Last name is required';
+    }
+
+    // Company validation
+    if (!formData.company.trim()) {
+      errors.company = 'Company is required';
+    }
+
+    setFormErrors(errors);
+    return !Object.values(errors).some(error => error !== '');
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    
+    // Clear error when user starts typing
+    if (formErrors[field as keyof typeof formErrors]) {
+      setFormErrors(prev => ({ ...prev, [field]: '' }));
+    }
+  };
+
+  const handleSubscriptionSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('https://hook.eu2.make.com/di9xteoqx17ux00zpuisa6i15o4bh0k6', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          company: formData.company
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setFormData({ email: '', firstName: '', lastName: '', company: '' });
+        
+        // Auto-close modal after 3 seconds
+        setTimeout(() => {
+          setShowSubscriptionModal(false);
+          setSubmitSuccess(false);
+        }, 3000);
+      } else {
+        throw new Error('Subscription failed');
+      }
+    } catch (error) {
+      setSubmitError('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleOpenSubscriptionModal = () => {
+    setShowSubscriptionModal(true);
+    setSubmitSuccess(false);
+    setSubmitError('');
+    setFormErrors({ email: '', firstName: '', lastName: '', company: '' });
+  };
+
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#0a0b0a] via-[#1a1d1b] to-[#0a0b0a] flex items-center justify-center">
@@ -126,7 +240,15 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
           
           {/* CTA Button */}
           <div className="mb-12 animate-fadeInUp delay-600">
-            <button className="bg-gradient-to-r from-[#117b69] to-[#0f6b5a] hover:from-[#0f6b5a] hover:to-[#0d5a4a] text-white rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#117b69]/25 flex items-center mx-auto">
+            <button 
+              onClick={() => {
+                const companySelector = document.querySelector('[data-company-selector]');
+                if (companySelector) {
+                  companySelector.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }}
+              className="bg-gradient-to-r from-[#117b69] to-[#0f6b5a] hover:from-[#0f6b5a] hover:to-[#0d5a4a] text-white rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#117b69]/25 flex items-center mx-auto cursor-pointer"
+            >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
@@ -322,7 +444,7 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
         </div>
 
         {/* Company Selector */}
-        <div className="mt-32 animate-fadeInUp delay-500">
+        <div className="mt-32 animate-fadeInUp delay-500" data-company-selector>
           <CompanySelector
             companies={companies}
             selectedCompany={selectedCompany}
@@ -365,6 +487,28 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
                 </CardContent>
               </Card>
             </div>
+          </div>
+        )}
+
+        {/* CTA Button - Portfolio Strategy Call */}
+        {selectedCompany && (
+          <div className="max-w-2xl mx-auto mb-8 mt-16 text-center animate-fadeInUp delay-800">
+            <a 
+              href="https://calendly.com/10xhiring/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-gradient-to-r from-[#117b69] to-[#0f6b5a] hover:from-[#0f6b5a] hover:to-[#0d5a4a] text-white rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#117b69]/25"
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              {selectedCompany 
+                ? `Discuss ${selectedCompany.name}'s Hiring Strategy`
+                : "Book a 30-Minute Portfolio Strategy Call"
+              }
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </a>
+            <p className="text-white/60 text-sm mt-3">
+              Free consultation • No commitment required
+            </p>
           </div>
         )}
 
@@ -454,6 +598,21 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
             <div className="w-2 h-2 bg-white/40 rounded-full"></div>
             <div className="w-2 h-2 bg-[#117b69] rounded-full"></div>
           </div>
+        </div>
+
+        {/* CTA Button - VC Score Updates Subscription */}
+        <div className="max-w-2xl mx-auto mt-16 text-center animate-fadeInUp delay-800">
+          <button 
+            onClick={handleOpenSubscriptionModal}
+            className="inline-flex items-center bg-gradient-to-r from-[#117b69] to-[#0f6b5a] hover:from-[#0f6b5a] hover:to-[#0d5a4a] text-white rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#117b69]/25"
+          >
+            <Bell className="w-5 h-5 mr-2" />
+            Get Monthly VC Score Updates
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </button>
+          <p className="text-white/60 text-sm mt-3">
+            Stay informed about your portfolio companies' risk scores
+          </p>
         </div>
 
         {/* Zero-Risk Partnership Section */}
@@ -573,6 +732,109 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
             </div>
           </div>
         </div>
+
+        </div>
+      </div>
+      
+      {/* Ready to Get Started Section */}
+      <section className="py-24 relative overflow-hidden mt-32 w-full">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#117b69]/10 to-transparent w-full"></div>
+        <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-7xl mx-auto text-center">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#117b69]/20 to-[#0f6b5a]/20 border border-[#117b69]/30 mb-8">
+                <span className="text-[#117b69] text-sm font-medium">Get Started</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
+                Ready to <span className="text-[#117b69]">Optimize</span> Your Portfolio?
+              </h2>
+              <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto">
+                Join leading VCs who are already using our platform to make smarter hiring decisions and extend portfolio company runways.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-7xl mx-auto">
+                {/* Card 1 - Urgent Hire Support */}
+                <Card className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl backdrop-blur-sm hover:border-[#117b69]/50 transition-all duration-500 group relative overflow-hidden">
+                  <div className="absolute top-4 right-4">
+                    <div className="px-3 py-1 bg-gradient-to-r from-[#117b69] to-[#0f6b5a] rounded-full text-white text-xs font-medium">
+                      Start This Week
+                    </div>
+                  </div>
+                  <CardContent className="p-8 pt-12">
+                    <h3 className="text-2xl font-semibold text-white mb-6 group-hover:text-[#117b69] transition-colors duration-300">
+                      Urgent Hire Support
+                    </h3>
+                    <p className="text-white/70 leading-relaxed mb-8">
+                      Need to fill a critical role fast? CTO, Head of Sales, VP Engineering? We'll start immediately with our 23-day average placement time. Pay 3-12% upfront, balance only when your company raises their next round.
+                    </p>
+                    <div className="mt-auto">
+                      <Button className="w-full bg-gradient-to-r from-[#117b69] to-[#0f6b5a] hover:from-[#0f6b5a] hover:to-[#0d5a4a] text-white rounded-2xl py-4 font-medium transition-all duration-300 hover:scale-105">
+                        Get Urgent Help
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Card 2 - Share with Portfolio */}
+                <Card className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl backdrop-blur-sm hover:border-[#117b69]/50 transition-all duration-500 group">
+                  <CardContent className="p-8 flex flex-col h-full">
+                    <h3 className="text-2xl font-semibold text-white mb-6 group-hover:text-[#117b69] transition-colors duration-300">
+                      Share with Your Portfolio Companies
+                    </h3>
+                    <p className="text-white/70 leading-relaxed mb-8 flex-grow">
+                      We know you're busy, so we've created a ready-to-send email with everything your portfolio companies need to understand our risk-adjusted hiring model.
+                    </p>
+                    <div className="mt-auto">
+                      <Button 
+                        onClick={handleSendToPortfolio}
+                        className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl py-4 font-medium transition-all duration-300 hover:scale-105"
+                      >
+                        Send to Portfolio Companies
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Card 3 - Portfolio Hiring Planning */}
+                <Card className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl backdrop-blur-sm hover:border-[#117b69]/50 transition-all duration-500 group relative overflow-hidden">
+                  <div className="absolute top-4 right-4">
+                    <div className="px-3 py-1 bg-gradient-to-r from-white/20 to-white/10 border border-white/20 rounded-full text-white text-xs font-medium">
+                      Free 30-Min Call
+                    </div>
+                  </div>
+                  <CardContent className="p-8 pt-12 flex flex-col h-full">
+                    <h3 className="text-2xl font-semibold text-white mb-6 group-hover:text-[#117b69] transition-colors duration-300">
+                      Portfolio Hiring Planning
+                    </h3>
+                    <p className="text-white/70 leading-relaxed mb-8 flex-grow">
+                      30-minute call to discuss your portfolio companies' upcoming hiring needs. We'll show you exactly how much runway you could extend across your companies and create a hiring roadmap that aligns with funding cycles.
+                    </p>
+                    <div className="mt-auto">
+                      <Button className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl py-4 font-medium transition-all duration-300 hover:scale-105">
+                        Plan Portfolio Hiring
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="text-center">
+                <p className="text-white/60 text-sm mb-4">
+                  Trusted by 50+ venture capital firms and 200+ portfolio companies
+                </p>
+                <div className="flex items-center justify-center gap-2 text-white/40">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-xs">Enterprise-grade security & compliance</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      {/* Reopen main content container for FAQ */}
+      <div className="relative z-10 w-full">
+        <div className="container mx-auto px-4 py-8">
 
         {/* FAQ Section */}
         <div className="mt-32 animate-fadeInUp delay-900">
@@ -918,6 +1180,142 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
                 Close
               </Button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Subscription Modal */}
+      {showSubscriptionModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl p-8 backdrop-blur-sm max-w-md w-full max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-start mb-6">
+              <h3 className="text-2xl font-semibold text-white">Stay Updated on Your Portfolio</h3>
+              <button 
+                onClick={() => setShowSubscriptionModal(false)}
+                className="text-white/60 hover:text-white transition-colors duration-200"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <p className="text-white/80 text-sm mb-6 leading-relaxed">
+              Get monthly VC Score updates and insights delivered to your inbox. Track your portfolio companies' risk scores and funding probability changes.
+            </p>
+
+            {submitSuccess ? (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#117b69] to-[#0f6b5a] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h4 className="text-white text-lg font-semibold mb-2">Thanks for subscribing!</h4>
+                <p className="text-white/60 text-sm">You'll receive monthly VC Score updates starting next month.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscriptionSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">Email *</label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#117b69] transition-colors duration-300"
+                    placeholder="your@email.com"
+                    required
+                  />
+                  {formErrors.email && (
+                    <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-white text-sm font-medium mb-2">First Name *</label>
+                    <input
+                      type="text"
+                      value={formData.firstName}
+                      onChange={(e) => handleInputChange('firstName', e.target.value)}
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#117b69] transition-colors duration-300"
+                      placeholder="John"
+                      required
+                    />
+                    {formErrors.firstName && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.firstName}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-white text-sm font-medium mb-2">Last Name *</label>
+                    <input
+                      type="text"
+                      value={formData.lastName}
+                      onChange={(e) => handleInputChange('lastName', e.target.value)}
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#117b69] transition-colors duration-300"
+                      placeholder="Doe"
+                      required
+                    />
+                    {formErrors.lastName && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.lastName}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">Company *</label>
+                  <input
+                    type="text"
+                    value={formData.company}
+                    onChange={(e) => handleInputChange('company', e.target.value)}
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:border-[#117b69] transition-colors duration-300"
+                    placeholder="Acme Ventures"
+                    required
+                  />
+                  {formErrors.company && (
+                    <p className="text-red-400 text-xs mt-1">{formErrors.company}</p>
+                  )}
+                </div>
+
+                {submitError && (
+                  <div className="bg-red-500/20 border border-red-500/40 rounded-lg p-3">
+                    <p className="text-red-400 text-sm">{submitError}</p>
+                  </div>
+                )}
+
+                <div className="flex gap-3 pt-4">
+                  <Button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex-1 bg-gradient-to-r from-[#117b69] to-[#0f6b5a] hover:from-[#0f6b5a] hover:to-[#0d5a4a] text-white rounded-2xl py-3 font-medium transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin mr-2"></div>
+                        Subscribing...
+                      </>
+                    ) : (
+                      <>
+                        <Mail className="w-4 h-4 mr-2" />
+                        Subscribe
+                      </>
+                    )}
+                  </Button>
+                  <Button 
+                    type="button"
+                    onClick={() => setShowSubscriptionModal(false)}
+                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl py-3 px-6 font-medium transition-all duration-300"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+
+                <p className="text-white/40 text-xs text-center mt-4">
+                  We respect your privacy. Unsubscribe anytime.
+                </p>
+              </form>
+            )}
           </div>
         </div>
       )}
