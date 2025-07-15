@@ -62,16 +62,6 @@ export const ElementLight: React.FC = () => {
     window.history.pushState({}, '', url.toString());
   };
 
-  const handleScoreChange = (newScore: number, newCompanyName: string) => {
-    if (selectedCompany) {
-      const updatedCompany = {
-        ...selectedCompany,
-        score: newScore,
-        name: newCompanyName
-      };
-      setSelectedCompany(updatedCompany);
-    }
-  };
 
   // Email template for portfolio companies
   const emailTemplate = {
@@ -464,7 +454,6 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
               companyName={selectedCompany.name}
               score={selectedCompany.score}
               companyLogoUrl={selectedCompany.logoUrl}
-              onScoreChange={handleScoreChange}
             />
           </div>
         )}
@@ -1008,106 +997,10 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
           </div>
         </div>
 
-        {/* Ready to Get Started Section */}
         </div>
       </div>
-      
-      <section className="py-24 relative overflow-hidden mt-32 w-full">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#117b69]/10 to-transparent w-full"></div>
-        <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-7xl mx-auto text-center">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#117b69]/20 to-[#0f6b5a]/20 border border-[#117b69]/30 mb-8">
-                <span className="text-[#117b69] text-sm font-medium">Get Started</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
-                Ready to <span className="text-[#117b69]">Optimize</span> Your Portfolio?
-              </h2>
-              <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto">
-                Join leading VCs who are already using our platform to make smarter hiring decisions and extend portfolio company runways.
-              </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-7xl mx-auto">
-                {/* Card 1 - Urgent Hire Support */}
-                <Card className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl backdrop-blur-sm hover:border-[#117b69]/50 transition-all duration-500 group relative overflow-hidden">
-                  <div className="absolute top-4 right-4">
-                    <div className="px-3 py-1 bg-gradient-to-r from-[#117b69] to-[#0f6b5a] rounded-full text-white text-xs font-medium">
-                      Start This Week
-                    </div>
-                  </div>
-                  <CardContent className="p-8 pt-12">
-                    <h3 className="text-2xl font-semibold text-white mb-6 group-hover:text-[#117b69] transition-colors duration-300">
-                      Urgent Hire Support
-                    </h3>
-                    <p className="text-white/70 leading-relaxed mb-8">
-                      Need to fill a critical role fast? CTO, Head of Sales, VP Engineering? We'll start immediately with our 23-day average placement time. Pay 3-12% upfront, balance only when your company raises their next round.
-                    </p>
-                    <div className="mt-auto">
-                      <Button className="w-full bg-gradient-to-r from-[#117b69] to-[#0f6b5a] hover:from-[#0f6b5a] hover:to-[#0d5a4a] text-white rounded-2xl py-4 font-medium transition-all duration-300 hover:scale-105">
-                        Get Urgent Help
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Card 2 - Share with Portfolio */}
-                <Card className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl backdrop-blur-sm hover:border-[#117b69]/50 transition-all duration-500 group">
-                  <CardContent className="p-8 flex flex-col h-full">
-                    <h3 className="text-2xl font-semibold text-white mb-6 group-hover:text-[#117b69] transition-colors duration-300">
-                      Share with Your Portfolio Companies
-                    </h3>
-                    <p className="text-white/70 leading-relaxed mb-8 flex-grow">
-                      We know you're busy, so we've created a ready-to-send email with everything your portfolio companies need to understand our risk-adjusted hiring model.
-                    </p>
-                    <div className="mt-auto">
-                      <Button 
-                        onClick={handleSendToPortfolio}
-                        className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl py-4 font-medium transition-all duration-300 hover:scale-105"
-                      >
-                        Send to Portfolio Companies
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Card 3 - Portfolio Hiring Planning */}
-                <Card className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl backdrop-blur-sm hover:border-[#117b69]/50 transition-all duration-500 group relative overflow-hidden">
-                  <div className="absolute top-4 right-4">
-                    <div className="px-3 py-1 bg-gradient-to-r from-white/20 to-white/10 border border-white/20 rounded-full text-white text-xs font-medium">
-                      Free 30-Min Call
-                    </div>
-                  </div>
-                  <CardContent className="p-8 pt-12 flex flex-col h-full">
-                    <h3 className="text-2xl font-semibold text-white mb-6 group-hover:text-[#117b69] transition-colors duration-300">
-                      Portfolio Hiring Planning
-                    </h3>
-                    <p className="text-white/70 leading-relaxed mb-8 flex-grow">
-                      30-minute call to discuss your portfolio companies' upcoming hiring needs. We'll show you exactly how much runway you could extend across your companies and create a hiring roadmap that aligns with funding cycles.
-                    </p>
-                    <div className="mt-auto">
-                      <Button className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl py-4 font-medium transition-all duration-300 hover:scale-105">
-                        Plan Portfolio Hiring
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="text-center">
-                <p className="text-white/60 text-sm mb-4">
-                  Trusted by 50+ venture capital firms and 200+ portfolio companies
-                </p>
-                <div className="flex items-center justify-center gap-2 text-white/40">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-xs">Enterprise-grade security & compliance</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      {/* Footer */}
+      {/* FAQ Section */}
       <div className="relative z-10 w-full">
         <div className="container mx-auto px-4 py-8">
           <footer className="py-12 border-t border-white/10">
