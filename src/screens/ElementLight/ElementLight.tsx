@@ -15,11 +15,13 @@ interface Company {
   portfolio?: Array<{ name: string; announcementDate: string; }>;
 }
 
+
 export const ElementLight: React.FC = () => {
-  const { companies, isLoading, error, hasMore, loadMore, totalCount, loadedCount } = useCSVData();
+  const { companies, isLoading, error, hasMore, loadMore, totalCount, loadedCount, searchCompanies } = useCSVData();
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [copied, setCopied] = useState(false);
+  
   
   // Subscription modal state
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
@@ -187,6 +189,7 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
     setFormErrors({ email: '', firstName: '', lastName: '', company: '' });
   };
 
+
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#0a0b0a] via-[#1a1d1b] to-[#0a0b0a] flex items-center justify-center">
@@ -208,6 +211,7 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
       {/* Main Content */}
       <div className="relative z-10 w-full">
         <div className="container mx-auto px-4 py-8">
+          
           {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#117b69]/20 to-[#0f6b5a]/20 border border-[#117b69]/30 mb-8 animate-fadeInUp">
@@ -444,6 +448,7 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
             onLoadMore={loadMore}
             totalCount={totalCount}
             loadedCount={loadedCount}
+            searchCompanies={searchCompanies}
           />
         </div>
 

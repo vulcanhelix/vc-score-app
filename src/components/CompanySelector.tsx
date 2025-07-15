@@ -20,6 +20,7 @@ interface CompanySelectorProps {
   onLoadMore?: () => void;
   totalCount?: number;
   loadedCount?: number;
+  searchCompanies?: (searchTerm: string) => Company[];
 }
 
 // Debounced search hook
@@ -148,7 +149,8 @@ export const CompanySelector: React.FC<CompanySelectorProps> = ({
   hasMore = false,
   onLoadMore,
   totalCount,
-  loadedCount
+  loadedCount,
+  searchCompanies
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -161,11 +163,18 @@ export const CompanySelector: React.FC<CompanySelectorProps> = ({
     if (!debouncedSearchTerm.trim()) {
       return companies;
     }
+    
+    // Use the searchCompanies function from the hook if available (searches all companies)
+    if (searchCompanies) {
+      return searchCompanies(debouncedSearchTerm);
+    }
+    
+    // Fallback to local filtering (only searches loaded companies)
     const searchLower = debouncedSearchTerm.toLowerCase();
     return companies.filter(company =>
       company.name.toLowerCase().includes(searchLower)
     );
-  }, [companies, debouncedSearchTerm]);
+  }, [companies, debouncedSearchTerm, searchCompanies]);
 
   const handleCompanySelect = useCallback((company: Company) => {
     onCompanySelect(company);

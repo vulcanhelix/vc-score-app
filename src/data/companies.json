@@ -1,0 +1,112 @@
+[
+  {
+    "id": "test-company",
+    "name": "Test Company",
+    "score": 75,
+    "logoUrl": null,
+    "portfolio": []
+  },
+  {
+    "id": "mvp-test-company",
+    "name": "MVP Test Company",
+    "score": 85,
+    "logoUrl": "https://example.com/logo.png",
+    "portfolio": []
+  },
+  {
+    "id": "portfolio-test-vc",
+    "name": "Portfolio Test VC",
+    "score": 88,
+    "logoUrl": "https://example.com/logo.png",
+    "portfolio": []
+  },
+  {
+    "id": "new-portfolio-vc",
+    "name": "New Portfolio VC",
+    "score": 92,
+    "logoUrl": "https://example.com/logo.png",
+    "portfolio": [
+      {
+        "name": "StartupCo",
+        "announcementDate": "2024-01-15"
+      },
+      {
+        "name": "TechFirm",
+        "announcementDate": "2024-02-20"
+      },
+      {
+        "name": "InnovateLab",
+        "announcementDate": "2024-03-10"
+      }
+    ]
+  },
+  {
+    "id": "investment-type-test-vc",
+    "name": "Investment Type Test VC",
+    "score": 95,
+    "logoUrl": "https://example.com/logo.png",
+    "portfolio": [
+      {
+        "name": "TechStartup",
+        "announcementDate": "2024-01-15",
+        "investmentType": "Series A"
+      },
+      {
+        "name": "FinTechCo",
+        "announcementDate": "2024-02-20",
+        "investmentType": "Seed"
+      },
+      {
+        "name": "HealthTech",
+        "announcementDate": "2024-03-10",
+        "investmentType": "Series B"
+      }
+    ]
+  },
+  {
+    "id": "searchclickboom",
+    "name": "SearchClickBoom",
+    "score": 88,
+    "logoUrl": null,
+    "portfolio": [
+      {
+        "name": "SearchClickboom ads",
+        "announcementDate": "Unknown",
+        "investmentType": "Seed"
+      },
+      {
+        "name": "Hurren and Hope",
+        "announcementDate": "Unknown",
+        "investmentType": "Series B"
+      },
+      {
+        "name": "Fintch Capital",
+        "announcementDate": "Unknown",
+        "investmentType": "Series C"
+      }
+    ]
+  },
+  {
+    "id": "growth-strategy",
+    "name": "Growth Strategy",
+    "score": 5,
+    "logoUrl": null,
+    "portfolio": [
+      {
+        "name": "SearchClickboom ads",
+        "announcementDate": "Unknown",
+        "investmentType": "Seed"
+      },
+      {
+        "name": "Hurren and Hope",
+        "announcementDate": "Unknown",
+        "investmentType": "Series A"
+      },
+      {
+        "name": "Fintch Capital",
+        "announcementDate": "Unknown",
+        "investmentType": "Series D+"
+      }
+    ]
+  }
+]

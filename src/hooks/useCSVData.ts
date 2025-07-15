@@ -1204,11 +1204,25 @@ export const useCSVData = () => {
       try {
         setIsLoading(true);
         
+        // Fetch dynamic companies from API
+        let dynamicCompanies = [];
+        try {
+          const response = await fetch('http://localhost:3001/api/companies');
+          if (response.ok) {
+            dynamicCompanies = await response.json();
+          }
+        } catch (apiError) {
+          console.warn('API unavailable, using static data only');
+        }
+        
         // Fetch portfolio data
         const portfolioData = await fetchPortfolioData();
         
-        // Merge portfolio data with static company data
-        const companiesWithPortfolio = STATIC_COMPANIES_DATA.map(company => {
+        // Merge with existing static companies
+        const allCompaniesData = [...STATIC_COMPANIES_DATA, ...dynamicCompanies];
+        
+        // Merge portfolio data with all company data
+        const companiesWithPortfolio = allCompaniesData.map(company => {
           const portfolio = portfolioData.get(company.name) || [];
           return {
             ...company,
