@@ -1169,10 +1169,29 @@ const fetchPortfolioData = async (): Promise<Map<string, PortfolioCompany[]>> =>
         
         portfolioData.forEach(({ name, date, investmentType }) => {
           if (name && name.trim() && name !== 'N/A') {
+            // Extract actual company name from the full description
+            // Format is usually like "VanEck investment in Seed Round - CompanyName"
+            let companyName = name.trim();
+            let cleanInvestmentType = investmentType && investmentType.trim() && investmentType !== 'N/A' ? investmentType.trim() : 'Unknown';
+            
+            // Try to extract company name from description if it follows the pattern
+            const match = companyName.match(/.*?-\s*(.+)$/);
+            if (match) {
+              companyName = match[1].trim();
+            }
+            
+            // Try to extract investment type from the description if not available in separate column
+            if (cleanInvestmentType === 'Unknown' || cleanInvestmentType === 'investment') {
+              const investmentMatch = name.match(/investment in (.+?) -/);
+              if (investmentMatch) {
+                cleanInvestmentType = investmentMatch[1].trim();
+              }
+            }
+            
             portfolio.push({
-              name: name.trim(),
+              name: companyName,
               announcementDate: date && date.trim() ? date.trim() : 'Unknown',
-              investmentType: investmentType && investmentType.trim() && investmentType !== 'N/A' ? investmentType.trim() : 'Unknown'
+              investmentType: cleanInvestmentType
             });
           }
         });
