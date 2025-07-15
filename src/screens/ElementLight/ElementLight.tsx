@@ -17,7 +17,7 @@ interface Company {
 
 
 export const ElementLight: React.FC = () => {
-  const { companies, isLoading, error, hasMore, loadMore, totalCount, loadedCount, searchCompanies } = useCSVData();
+  const { companies, isLoading, error, hasMore, loadMore, totalCount, loadedCount, searchCompanies, refreshData } = useCSVData();
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [copied, setCopied] = useState(false);

@@ -5,6 +5,7 @@ import { getCompanyLogo, generateFallbackAvatar } from '../utils/logoService';
 interface PortfolioCompany {
   name: string;
   announcementDate: string;
+  investmentType?: string;
 }
 
 // Interface defining the structure for a company object
@@ -1296,6 +1297,56 @@ export const useCSVData = () => {
     );
   };
 
+  const refreshData = async () => {
+    try {
+      setIsLoading(true);
+      
+      // Fetch dynamic companies from API
+      let dynamicCompanies = [];
+      try {
+        const response = await fetch('http://localhost:3001/api/companies');
+        if (response.ok) {
+          dynamicCompanies = await response.json();
+        }
+      } catch (apiError) {
+        console.warn('API unavailable, using static data only');
+      }
+      
+      // Fetch portfolio data
+      const portfolioData = await fetchPortfolioData();
+      
+      // Merge with existing static companies
+      const allCompaniesData = [...STATIC_COMPANIES_DATA, ...dynamicCompanies];
+      
+      // Merge portfolio data with all company data
+      const companiesWithPortfolio = allCompaniesData.map(company => {
+        const portfolio = portfolioData.get(company.name) || [];
+        return {
+          ...company,
+          portfolio
+        };
+      });
+      
+      // Sort by score (highest first)
+      const sortedCompanies = companiesWithPortfolio.sort((a, b) => b.score - a.score);
+      
+      setAllCompanies(sortedCompanies);
+      
+      // Reset pagination and show first page
+      const initialCompanies = sortedCompanies.slice(0, COMPANIES_PER_PAGE);
+      setCompanies(initialCompanies);
+      setCurrentPage(1);
+      setHasMore(sortedCompanies.length > COMPANIES_PER_PAGE);
+      
+      setError(null);
+    } catch (err) {
+      console.error('Error refreshing data:', err);
+      setError('Failed to refresh company data');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return { 
     companies, 
     allCompanies,
@@ -1304,6 +1355,7 @@ export const useCSVData = () => {
     hasMore,
     loadMore,
     searchCompanies,
+    refreshData,
     totalCount: allCompanies.length,
     loadedCount: companies.length
   };
