@@ -1225,7 +1225,15 @@ export const useCSVData = () => {
         
         // Merge portfolio data with all company data
         const companiesWithPortfolio = allCompaniesData.map(company => {
-          const portfolio = portfolioData.get(company.name) || [];
+          // For dynamic companies (from API), preserve their existing portfolio data
+          // For static companies, use CSV portfolio data
+          const csvPortfolio = portfolioData.get(company.name) || [];
+          const existingPortfolio = company.portfolio || [];
+          
+          // If company already has portfolio data (from API), keep it
+          // Otherwise, use CSV portfolio data
+          const portfolio = existingPortfolio.length > 0 ? existingPortfolio : csvPortfolio;
+          
           return {
             ...company,
             portfolio
@@ -1321,7 +1329,15 @@ export const useCSVData = () => {
       
       // Merge portfolio data with all company data
       const companiesWithPortfolio = allCompaniesData.map(company => {
-        const portfolio = portfolioData.get(company.name) || [];
+        // For dynamic companies (from API), preserve their existing portfolio data
+        // For static companies, use CSV portfolio data
+        const csvPortfolio = portfolioData.get(company.name) || [];
+        const existingPortfolio = company.portfolio || [];
+        
+        // If company already has portfolio data (from API), keep it
+        // Otherwise, use CSV portfolio data
+        const portfolio = existingPortfolio.length > 0 ? existingPortfolio : csvPortfolio;
+        
         return {
           ...company,
           portfolio
