@@ -12,7 +12,7 @@ interface Company {
   name: string;
   score: number;
   logoUrl?: string;
-  portfolio?: Array<{ name: string; announcementDate: string; }>;
+  portfolio?: Array<{ name: string; announcementDate: string; investmentType?: string; }>;
 }
 
 
@@ -473,7 +473,14 @@ Thought it could be useful if you're planning any hires. Details attached. Let m
                   <div className="space-y-2">
                     {selectedCompany.portfolio.map((company, index) => (
                       <div key={index} className="flex justify-between items-center py-2 px-4 bg-white/5 rounded-lg">
-                        <span className="text-white">{company.name}</span>
+                        <div className="flex-1">
+                          <span className="text-white">{company.name}</span>
+                          {company.investmentType && (
+                            <span className="ml-2 px-2 py-1 bg-[#117b69]/20 text-[#117b69] text-xs rounded-full">
+                              {company.investmentType}
+                            </span>
+                          )}
+                        </div>
                         <span className="text-white/60 text-sm">{company.announcementDate}</span>
                       </div>
                     ))}
