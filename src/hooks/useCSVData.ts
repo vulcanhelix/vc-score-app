@@ -1160,18 +1160,19 @@ const fetchPortfolioData = async (): Promise<Map<string, PortfolioCompany[]>> =>
         const vcName = columns[0];
         const portfolio: PortfolioCompany[] = [];
         
-        // Extract portfolio companies from columns 8, 14, 20 with dates from 9, 15, 21
+        // Extract portfolio companies from columns 8, 14, 20 with dates from 9, 15, 21 and investment types from 10, 16, 22
         const portfolioData = [
-          { name: columns[8], date: columns[9] },
-          { name: columns[14], date: columns[15] },
-          { name: columns[20], date: columns[21] }
+          { name: columns[8], date: columns[9], investmentType: columns[10] },
+          { name: columns[14], date: columns[15], investmentType: columns[16] },
+          { name: columns[20], date: columns[21], investmentType: columns[22] }
         ];
         
-        portfolioData.forEach(({ name, date }) => {
+        portfolioData.forEach(({ name, date, investmentType }) => {
           if (name && name.trim() && name !== 'N/A') {
             portfolio.push({
               name: name.trim(),
-              announcementDate: date && date.trim() ? date.trim() : 'Unknown'
+              announcementDate: date && date.trim() ? date.trim() : 'Unknown',
+              investmentType: investmentType && investmentType.trim() && investmentType !== 'N/A' ? investmentType.trim() : 'Unknown'
             });
           }
         });
